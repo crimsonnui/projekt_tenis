@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <title>Book a Tennis Court</title>
+    <style>
+        .table-row:hover{
+            background-color:#6d7792;
+        }
+        .add-btn{
+            background-color:grey;
+             color:rgb(1, 1, 1);
+             border-radius:5px;
+             border:none;
+              padding:10px 10px;
+              width:30vh;
+              font-weight:800;
+        }
+        .add-btn:hover{
+           opacity:0.8;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+{% include "index.html"%}
+<div style = "width:100%; display:flex; flex-direction: row; text-align:center; margin:0 auto;padding :25px; gap:10px; justify-content:flex-beginning">
+<h2 style="color:white">Trenerzy</h2>
+<a style="color:rgb(1, 1, 1); text-decoration:none" href="Dodaj"><button type="submit" class="add-btn">Dodaj trenera</button></a>
+</div>
+<table style="width:80%; margin:0 auto; border-radius:0px; background-color:black; padding:10px; table-layout: fixed; word-wrap:break-word">
+<tr style="color:darkgrey; border-collapse:collapse; border-bottom: 1px solid rgb(207, 207, 207); font-size:15px">
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">ID</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Imię i nazwisko</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Adres e-mail</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Wiek</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Nr telefonu</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Specjalizacja</th>
+</tr>
+{% for trener in trenerzy %}
+    <tr class="table-row" style="color:white; border-collapse:collapse; padding:30px; border-bottom: 1px solid rgb(207, 207, 207); " >
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{trener.id}}</td>
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{trener.imieInazwisko}}</td>
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{trener.adresEmail}}</td>
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{trener.wiek}}</td>
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{trener.nrTelefonu}}</td>
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{trener.specjalizacja}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+

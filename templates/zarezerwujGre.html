@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+          crossorigin="anonymous">
+</head>
+<body style="background-image: url('/static/tlodorezerwacji.jpeg');height:100vh;align-items:center; display:flex; justify-content: center;">
+<form method="POST" action="{{ url_for('zarezerwuj_gre') }}" style="width:50%">
+    <div style=" width:100%;align-items:center; border-radius:30px;padding:20px;background-color:black; margin:0 auto;display:flex; flex-direction:column; justify-content:center; text-align:center; color:white">
+        <h4>Zarezerwuj grę</h4>
+    </div>
+    <div style="width:100%; display: flex; flex-direction: column;color:white" class="form-group">
+        <label style="text-align: left;margin:0" for="gracze-select">Gracz</label>
+        <select name="gracze_select" id="gracze-select">
+    <option value="">--Wybierz gracza--</option>
+    {% for gracz in gracze %}
+    <option value="{{ gracz.id }}" >{{gracz.imieInazwisko}}</option>
+        {% endfor %}
+</select>
+    </div>
+    <div style=" width:100%;display: flex; flex-direction: column;color:white" class="form-group">
+        <label style="text-align: left;margin:0" for="korty-select">Kort</label>
+        <select name="korty_select" id="korty-select">
+    <option value="">--Wybierz kort--</option>
+    {% for kort in korty %}
+    <option value="{{ kort.id }}" >{{kort.nazwa}}</option>
+        {% endfor %}
+</select>
+    </div>
+    <div style="width:100%; display: flex; flex-direction: column;color:white" class="form-group">
+        <label style="text-align: left;margin:0" for="trenerzy-select">Trener</label>
+        <select name="trenerzy_select" id="trenerzy-select">
+    <option value="">--Wybierz trenera--</option>
+    {% for trener in trenerzy %}
+    <option value="{{ trener.id }}" >{{trener.imieInazwisko}}</option>
+        {% endfor %}
+</select>
+    </div>
+    <div style="width:100%;display: flex; flex-direction: column;color:white"class="form-group">
+        <label style="text-align: left;margin:0" for="LiczbaDni">Liczba dni</label>
+        <input style="width:100%;border:none; height:45px;border-radius: 0px; " type="text" name="liczbaDni" class="text" id="LiczbaDni" aria-describedby="emailHelp">
+    </div>
+    <div style="width:100%;display: flex; flex-direction: column;color:white"class="form-group">
+        <label style="text-align: left;margin:0" for="Uwagi">Dodatkowe informacje</label>
+        <input style="width:100%;border:none; height:45px;border-radius: 0px; " type="text" name="uwagi" class="text" id="Uwagi" aria-describedby="emailHelp">
+    </div>
+    <div style="width:100%;display: flex; flex-direction: column;color:white"class="form-group">
+        <label style="text-align: left;margin:0" for="KodZnizkowy">Kod znizkowy</label>
+        <input style="width:100%;border:none; height:45px;border-radius: 0px; " type="text" name="kodZnizkowy" class="text" id="KodZnizkowy" aria-describedby="emailHelp">
+    </div>
+    <div style="text-align: center;">
+    <button type="submit" style="margin-top:20px;font-weight:500;text-align:center; width:40%;background-color:darkgreen; color:rgb(1, 1, 1); border-radius:0px;border:none; padding:10px 5px">
+        <a style="color:rgb(1, 1, 1); text-decoration:none">Dodaj</a>
+    </button>
+    </div>
+</form>
+</body>
+</html>

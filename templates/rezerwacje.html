@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <title>Book a Tennis Court</title>
+</head>
+<body>
+{% include "index.html"%}
+<div style = "width:100%; display:flex; flex-direction: row; margin:0 auto;padding:45px; gap:10px; justify-content:flex-beginning">
+<h2 style="color:white;">Lista dokonanych rezerwacji</h2>
+</div>
+</div>
+<table style="width:95%; margin:0 auto; border-radius:0px; background-color:darkorange; padding:10px; table-layout: fixed; word-wrap:break-word">
+<tr style="color:dark; border-collapse:collapse; border-bottom: 1px solid rgb(207, 207, 207); font-size:15px">
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">ID</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Kort</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Gracz</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Trener</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Uwagi</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Kod zniżkowy</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Liczba dni</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Data początkowa</th>
+    <th style = "text-align: center;vertical-align:middle;padding: 5px">Data końcowa</th>
+</tr>
+{% for rezerwuj in rezerwacje %}
+    <tr class="table-row" style="color:white; border-collapse:collapse; padding:30px; border-bottom: 1px solid rgb(207, 207, 207); " >
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{rezerwuj.id}}</td>
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">
+        {% for kort in korty %}
+            {% if rezerwuj.kortId == kort.id %}
+               {{kort.nazwa}}
+            {% endif %}
+        {% endfor %}
+        </td>
+        {% for gracz in gracze %}
+            {% if rezerwuj.graczId == gracz.id %}
+                <td style = "text-align: center;vertical-align:middle; padding: 10px">{{gracz.imieInazwisko}}</td>
+            {% endif %}
+        {% endfor %}
+        {% for trener in trenerzy %}
+            {% if rezerwuj.trenerId == trener.id %}
+                <td style = "text-align: center;vertical-align:middle; padding: 10px">{{trener.imieInazwisko}}</td>
+            {% endif %}
+        {% endfor %}
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{rezerwuj.uwagi}}</td>
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{rezerwuj.kodZnizkowy}}</td>
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{rezerwuj.liczbaDni}}</td>
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{rezerwuj.dataPoczatkowa}}</td>
+        <td style = "text-align: center;vertical-align:middle; padding: 15px">{{rezerwuj.dataKoncowa}}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
